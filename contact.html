@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact – Laninya Digital Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact details and call-to-action for Laninya Digital Resources." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --accent: #fbbf24;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.16), transparent 55%),
+        #f3f4f6;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: var(--max-width); margin: 0 auto; padding: 20px 18px 64px; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+      width: 46px; height: 46px; border-radius: 16px;
+      background: conic-gradient(from 160deg, #fbbf24, #2563eb, #1e3a8a, #fbbf24);
+      display: flex; align-items: center; justify-content: center;
+      color: #fefce8; font-weight: 800; font-size: 20px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.35);
+    }
+    .brand-title { font-weight: 700; font-size: 18px; }
+    .brand-sub { font-size: 13px; color: var(--muted); }
+    nav {
+      display: flex; gap: 10px; align-items: center;
+      font-size: 13px; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .nav-link {
+      padding: 6px 11px; border-radius: var(--radius-pill);
+      color: #111827; background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.35); backdrop-filter: blur(8px);
+    }
+    .nav-link.primary {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8; border-color: transparent; font-weight: 600;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
+    }
+    .nav-wrapper {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(248, 250, 252, 0.96), rgba(248, 250, 252, 0.9));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 10px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+      .section-label {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--primary-dark); font-weight: 700; margin-bottom: 6px;
+    }
+    .section-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .section-sub {
+      font-size: 14px; color: var(--muted); max-width: 680px; margin-bottom: 16px;
+    }
+    section { margin-bottom: 40px; }
+    .contact-card {
+      background: #020617; color: #e5e7eb;
+      border-radius: 20px; padding: 18px 18px 16px;
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.9);
+      position: relative; overflow: hidden;
+    }
+    .contact-card::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.4), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.35), transparent 55%);
+      opacity: 0.9; pointer-events: none;
+    }
+    .contact-inner { position: relative; z-index: 1; }
+    .contact-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .contact-sub { font-size: 13px; color: #cbd5f5; margin-bottom: 10px; }
+    .contact-row { font-size: 13px; margin-bottom: 4px; }
+    .contact-row span.label { color: #9ca3af; margin-right: 4px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 9px 18px; border-radius: var(--radius-pill); border: none;
+      cursor: pointer; font-size: 13px; font-weight: 600;
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8; box-shadow: 0 14px 32px rgba(37, 99, 235, 0.5);
+    }
+    footer {
+      margin-top: 40px; font-size: 11px; color: var(--muted); text-align: center;
+    }
+    .footer-nav { margin-bottom: 6px; }
+    .footer-nav a {
+      margin: 0 6px; font-size: 11px; color: var(--muted);
+    }
+    /* Floating Contact button */
+    .floating-contact {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+    }
+
+    .floating-contact a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.6);
+      text-decoration: none;
+    }
+
+    .floating-contact a:hover {
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.8);
+      transform: translateY(-1px);
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 70px;
+      z-index: 40;
+      display: none;
+    }
+
+    .back-to-top button {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 10px;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.8);
+    }
+
+    .back-to-top button:hover {
+      background: #020617;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+      @media (max-width: 640px) {
+      header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+  <div class="nav-wrapper">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo">LDR</div>
+        <div>
+          <div class="brand-title">Laninya – Digital Resources</div>
+          <div class="brand-sub">Websites & Digital Marketing for local Irish small businesses</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html" class="nav-link ">Home</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <!--<a href="cold-email.html" class="nav-link">Cold Email</a>
+        <a href="business-model.html" class="nav-link">Business Model</a>-->
+        <a href="contact.html" class="nav-link primary">Contact</a>
+      </nav>
+    </div>
+  </div>
+    </header>
+    
+    <main>
+      <section>
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">One clear way to reach you</h2>
+        <p class="section-sub">
+          Keep it simple. Most small business owners just want to send a quick email and get a human reply.
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-inner">
+            <div class="contact-title">Ready to look more professional than your competitors?</div>
+            <div class="contact-sub">
+              Send a quick email with your business name, location, and what you’d like your website or fixes to do.
+            </div>
+            <div class="contact-row">
+              <span class="label">Email:</span>
+              <strong>Design.Resources@dr.com</strong>
+            </div>
+            <div class="contact-row">
+              <span class="label">Website:</span>
+              <strong>www.dr.com</strong>
+            </div>
+            <div class="contact-row">
+              <span class="label">Subject idea:</span>
+              “Quick website idea for [Business Name] in [Town]”
+            </div>
+            <div style="margin-top:12px;">
+              <a href="mailto:Design.Resources@dr.com?subject=Quick%20website%20idea%20for%20your%20business"
+                 class="btn btn-pcontact.htmlrimary" target="_blank" rel="noopener">
+                Send me a quick email
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    </div>
+    <footer>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>·
+        <a href="pricing.html">Pricing</a>·
+        <a href="services.html">Services</a>·
+        <a href="portfolio.html">Portfolio</a>·
+        <!--<a href="cold-email.html">Cold Email</a>·
+        <a href="business-model.html">Business Model</a>·-->
+        <a href="contact.html">Contact</a>
+      </div>
+      © <span id="year"></span> Laninya – Digital Resources.
+    </footer>
+
+  <div class="back-to-top" id="backToTop">
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑ Top</button>
+  </div>
+
+  <div class="floating-contact">
+    <a href="contact.html">Contact Me</a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    window.addEventListener("scroll", () => {
+      const btn = document.getElementById("backToTop");
+      if (window.scrollY > 250) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Laninya – Digital Resources for Local Irish Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Bold, modern websites and support for local Irish businesses. €149 starter sites, quick fixes, and ongoing help." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --accent: #fbbf24;
+      --accent-soft: #fef3c7;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.16), transparent 55%),
+        #f3f4f6;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 18px 64px; /* extra top for sticky nav */
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Sticky nav wrapper */
+    .nav-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(248, 250, 252, 0.96), rgba(248, 250, 252, 0.9));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: conic-gradient(from 160deg, #fbbf24, #2563eb, #1e3a8a, #fbbf24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fefce8;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.35);
+    }
+
+    .brand-title { font-weight: 700; font-size: 18px; }
+    .brand-sub { font-size: 13px; color: var(--muted); }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      color: #111827;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .nav-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      text-decoration: none;
+    }
+
+    .nav-link.primary {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      border-color: transparent;
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
+    }
+
+    .nav-link.primary:hover {
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.65);
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary-dark);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(248, 250, 252, 1);
+      text-decoration: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-left {
+      padding: 24px 22px;
+      border-radius: 22px;
+      background: radial-gradient(circle at top left, #fef3c7, #ffffff 45%, #e5edff 100%);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 3.4vw, 34px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #2563eb, #1e3a8a, #fbbf24);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 11px;
+    }
+
+    .hero-badges span {
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.04);
+      color: #111827;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-note strong { color: #111827; }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hero-card {
+      border-radius: 20px;
+      background: radial-gradient(circle at top left, #1e3a8a, #020617 60%);
+      color: #e5e7eb;
+      padding: 16px 16px 14px;
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.4), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.3), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-card-inner { position: relative; z-index: 1; font-size: 12px; }
+
+    .hero-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-sub {
+      font-size: 12px;
+      color: #cbd5f5;
+      margin-bottom: 8px;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 8px;
+    }
+
+    .hero-card-list li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .hero-card-list li::before {
+      content: "•";
+      color: #fbbf24;
+    }
+
+    .hero-card-footer {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    .hero-mini {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-mini-card {
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 10px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      font-size: 11px;
+    }
+
+    .hero-mini-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-mini-main {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .hero-mini-sub {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    section { margin-bottom: 48px; }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 16px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      font-size: 13px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-tagline {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    .card-list li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .card-list li::before {
+      content: "•";
+      color: var(--primary);
+    }
+
+    .cta-banner {
+      margin-top: 24px;
+      background: var(--bg-alt);
+      border-radius: 18px;
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .cta-banner strong { font-size: 14px; }
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer-nav {
+      margin-bottom: 6px;
+    }
+
+    .footer-nav a {
+      margin: 0 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Floating Contact button */
+    .floating-contact {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+    }
+
+    .floating-contact a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.6);
+      text-decoration: none;
+    }
+
+    .floating-contact a:hover {
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.8);
+      transform: translateY(-1px);
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 70px;
+      z-index: 40;
+      display: none;
+    }
+
+    .back-to-top button {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 10px;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.8);
+    }
+
+    .back-to-top button:hover {
+      background: #020617;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right { order: -1; }
+      .cards-grid { grid-template-columns: minmax(0, 1fr); }
+      nav { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-left { padding: 20px 18px; }
+      .hero-card { padding: 14px 14px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrapper">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo">LDR</div>
+        <div>
+          <div class="brand-title">Laninya – Digital Resources</div>
+          <div class="brand-sub">Websites & Digital Marketing for local Irish small businesses</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html" class="nav-link primary">Home</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <!--<a href="cold-email.html" class="nav-link">Cold Email</a>
+        <a href="business-model.html" class="nav-link">Business Model</a>-->
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="page" id="top">
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div class="hero-inner">
+            <div class="hero-kicker">Websites that actually bring in customers</div>
+            <h1 class="hero-title">
+              Bold, modern sites for <span>local Irish businesses</span> starting at just €149.
+            </h1>
+            <p class="hero-sub">
+              I help trades, salons, cafés, and local shops go from “only on Facebook” to having a clean, mobile‑friendly
+              website that looks professional and actually gets enquiries.
+            </p>
+            <div class="hero-badges">
+              <span>Free audit & demo preview</span>
+              <span>€10–€40 quick fixes</span>
+              <span>€149 starter landing page</span>
+              <span>Ongoing support from €20/hour</span>
+            </div>
+            <div class="hero-cta-row">
+              <a href="pricing.html" class="btn btn-primary">View full pricing</a>
+              <a href="contact.html" class="btn btn-ghost">Book a free audit</a>
+            </div>
+            <div class="hero-note">
+              <strong>Need business today?</strong> Start with free audits and €10–€20 fixes to get your first paying
+              clients fast.
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-card-title">Your “immediate business” ladder</div>
+              <div class="hero-card-sub">
+                A simple path from free value to recurring income with local clients.
+              </div>
+              <ul class="hero-card-list">
+                <li>Offer free audits and demo screenshots to start conversations.</li>
+                <li>Sell €10–€40 quick fixes to turn interest into cash.</li>
+                <li>Pitch a €149 landing page as the clear next step.</li>
+                <li>Upsell add‑ons and monthly support for recurring income.</li>
+              </ul>
+              <div class="hero-card-footer">
+                This site is your agency front door. Use it as your live sales deck.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-mini">
+            <div class="hero-mini-card">
+              <div class="hero-mini-label">Core offer</div>
+              <div class="hero-mini-main">€149 Landing Page</div>
+              <div class="hero-mini-sub">
+                1‑page site, mobile‑friendly, clean HTML/CSS, built for local trades & shops.
+              </div>
+            </div>
+            <div class="hero-mini-card">
+              <div class="hero-mini-label">Lead magnet</div>
+              <div class="hero-mini-main">Free Audit & Demo</div>
+              <div class="hero-mini-sub">
+                Show value first, then offer low‑cost fixes and the full site.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Why this Resources</div>
+        <h2 class="section-title">Built for real Irish businesses, not tech bros</h2>
+        <p class="section-sub">
+          Most small businesses don’t need a giant, complicated website. They need something fast, clear, and easy to
+          update. That’s exactly what I build.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3 class="card-title">Simple, clear pricing</h3>
+            <p class="card-tagline">No hidden fees, no jargon.</p>
+            <ul class="card-list">
+              <li>€149 for a full starter landing page.</li>
+              <li>€10–€40 for quick fixes and small jobs.</li>
+              <li>€20/hour for ongoing support when you need it.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Designed for local search</h3>
+            <p class="card-tagline">So people can actually find you.</p>
+            <ul class="card-list">
+              <li>Basic SEO baked into every site.</li>
+              <li>Optimised for “[your trade] in [your town]”.</li>
+              <li>Clear calls‑to‑action so people contact you.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Fast, mobile‑first builds</h3>
+            <p class="card-tagline">Because most customers are on their phones.</p>
+            <ul class="card-list">
+              <li>Clean HTML & CSS, no clunky builders.</li>
+              <li>Loads quickly, even on older phones.</li>
+              <li>Looks sharp on desktop, tablet, and mobile.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cta-banner">
+          <div>
+            <strong>Ready to look more professional than your competitors?</strong><br />
+            Start with a free audit and a demo preview of what your site could look like.
+          </div>
+          <div>
+            <a href="contact.html" class="btn btn-primary">Get your free audit</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>·
+        <a href="pricing.html">Pricing</a>·
+        <a href="services.html">Services</a>·
+        <a href="portfolio.html">Portfolio</a>·
+        <!--<a href="cold-email.html">Cold Email</a>·
+        <a href="business-model.html">Business Model</a>·-->
+        <a href="contact.html">Contact</a>
+      </div>
+      © <span id="year"></span> Laninya – Digital Resources.
+    </footer>
+  </div>
+
+  <div class="back-to-top" id="backToTop">
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑ Top</button>
+  </div>
+
+  <div class="floating-contact">
+    <a href="contact.html">Contact Me</a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    window.addEventListener("scroll", () => {
+      const btn = document.getElementById("backToTop");
+      if (window.scrollY > 250) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

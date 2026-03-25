@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Client Onboarding – Laninya Digital Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Welcome to Laninya Digital Studio. Here’s everything you need to get started with your new website." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --accent: #fbbf24;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.16), transparent 55%),
+        #f3f4f6;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Sticky nav */
+    .nav-wrapper {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(248, 250, 252, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: conic-gradient(from 160deg, #fbbf24, #2563eb, #1e3a8a, #fbbf24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fefce8;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.35);
+    }
+
+    .brand-title { font-weight: 700; font-size: 18px; }
+    .brand-sub { font-size: 13px; color: var(--muted); }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #111827;
+    }
+
+    .nav-link.primary {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      border-color: transparent;
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 18px 64px;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+      margin-bottom: 24px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .list li {
+      margin-bottom: 8px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .list li::before {
+      content: "•";
+      color: var(--primary);
+    }
+
+    .return-home {
+      display: inline-block;
+      margin: 10px 0 20px;
+      padding: 8px 14px;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+      transition: 0.15s ease;
+    }
+
+    .return-home:hover {
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.55);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer-nav a {
+      margin: 0 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Floating Contact Button */
+    .floating-contact {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+    }
+
+    .floating-contact a {
+      display: inline-flex;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fefce8;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.6);
+      text-decoration: none;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 70px;
+      z-index: 40;
+      display: none;
+    }
+
+    .back-to-top button {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 10px;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.8);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Nav -->
+  <div class="nav-wrapper">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo">LD</div>
+        <div>
+          <div class="brand-title">Laninya – Digital Studio</div>
+          <div class="brand-sub">Client Onboarding</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-link ">Home</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <!--<a href="cold-email.html" class="nav-link">Cold Email</a>
+        <a href="business-model.html" class="nav-link">Business Model</a>-->
+        <a href="contact.html" class="nav-link ">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="page" id="top">
+    <a href="index.html" class="return-home">← Return to Homepage</a>
+
+    <section>
+      <div class="section-label">Welcome</div>
+      <h2 class="section-title">Welcome to Laninya Digital Studio</h2>
+      <p class="section-sub">
+        I’m excited to start building your new website. This onboarding page explains exactly how the process works,
+        what I need from you, and what happens next.
+      </p>
+    </section>
+
+    <div class="card">
+      <h3>What to Expect</h3>
+      <ul class="list">
+        <li>A simple, friendly process</li>
+        <li>Clear communication at every step</li>
+        <li>No jargon, no confusion</li>
+        <li>A website built for real Irish customers</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Step‑by‑Step Onboarding</h3>
+      <ul class="list">
+        <li><strong>Step 1:</strong> You send me your business details</li>
+        <li><strong>Step 2:</strong> I create your homepage layout</li>
+        <li><strong>Step 3:</strong> You review and request changes</li>
+        <li><strong>Step 4:</strong> I build the full site</li>
+        <li><strong>Step 5:</strong> Final review + launch</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>What I Need From You</h3>
+      <ul class="list">
+        <li>Your business name</li>
+        <li>Your location (town/county)</li>
+        <li>Your services (list)</li>
+        <li>Your opening hours</li>
+        <li>Your contact details</li>
+        <li>Any photos you want included</li>
+        <li>Your preferred colours (optional)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Timeline</h3>
+      <ul class="list">
+        <li>Homepage preview: 1–2 days</li>
+        <li>Full site build: 3–5 days</li>
+        <li>Revisions: 1–2 days</li>
+        <li>Launch: same day after approval</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Payment Structure</h3>
+      <ul class="list">
+        <li>50% upfront</li>
+        <li>50% on launch</li>
+        <li>Quick fixes billed separately (€10–€40)</li>
+        <li>Support billed hourly (€20/hour)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Next Steps</h3>
+      <p>Send your business details to:</p>
+      <p><strong>Email:</strong> Design.Resources@dr.com</p>
+      <p>Or click the button below.</p>
+      <a href="contact.html" class="btn-primary" style="padding:10px 18px; display:inline-block; border-radius:999px; text-decoration:none;">Start Onboarding</a>
+    </div>
+
+    <footer>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>·
+        <a href="pricing.html">Pricing</a>·
+        <a href="services.html">Services</a>·
+        <a href="portfolio.html">Portfolio</a>·
+        <!--<a href="cold-email.html">Cold Email</a>·
+        <a href="business-model.html">Business Model</a>·-->
+        <a href="contact.html">Contact</a>
+      </div>
+      © <span id="year"></span> Laninya – Digital Resources.
+    </footer>
+  </div>
+
+  <div class="back-to-top" id="backToTop">
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑ Top</button>
+  </div>
+
+  <div class="floating-contact">
+    <a href="contact.html">Contact Me</a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    window.addEventListener("scroll", () => {
+      const btn = document.getElementById("backToTop");
+      btn.style.display = window.scrollY > 250 ? "block" : "none";
+    });
+  </script>
+</body>
+</html>
